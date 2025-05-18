@@ -284,3 +284,126 @@ div.mdc-card {
 .mat-mdc-button {
   white-space: nowrap;
 }
+
+// Global styles
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f5f5f5;
+  color: #424242;
+}
+
+// Professional theme specific styles
+.professional-theme {
+  @include custom-components-theme($professional-theme);
+  @include css-vars($professional-theme);
+
+  // Card styling
+  .mat-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin: 8px;
+  }
+
+  // Product card specific styling
+  .product-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-image {
+      border-radius: 8px 8px 0 0;
+      background-color: #ffffff;
+    }
+
+    .product-info {
+      padding: 16px;
+      background-color: #ffffff;
+    }
+  }
+
+  // Button styling
+  .mat-button, .mat-raised-button {
+    border-radius: 4px;
+    text-transform: none;
+    font-weight: 500;
+  }
+
+  // Input field styling
+  .mat-form-field {
+    .mat-form-field-wrapper {
+      padding-bottom: 0.5em;
+    }
+  }
+
+  // Navigation styling
+  .mat-toolbar {
+    background-color: #424242;
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  // Sidenav styling
+  .mat-sidenav {
+    background-color: #ffffff;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  // Table styling
+  .mat-table {
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    .mat-header-cell {
+      color: #424242;
+      font-weight: 500;
+      background-color: #fafafa;
+    }
+
+    .mat-row {
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+
+  // Main content area
+  .mat-sidenav-container {
+    background-color: #f5f5f5;
+  }
+
+  // Search bar styling
+  .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: var(--theme-primary);
+  }
+
+  // Dialog styling
+  .mat-dialog-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  // List styling
+  .mat-list-item {
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+
+  // Menu styling
+  .mat-menu-panel {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}

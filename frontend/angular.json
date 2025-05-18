@@ -68,6 +68,18 @@
             }
           },
           "configurations": {
+            "development": {
+              "optimization": false,
+              "outputHashing": "none",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": false,
+              "extractLicenses": false,
+              "statsJson": false,
+              "progress": true,
+              "vendorChunk": true,
+              "buildOptimizer": false
+            },
             "production": {
               "fileReplacements": [
                 {

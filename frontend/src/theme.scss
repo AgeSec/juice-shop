@@ -10,6 +10,40 @@ $my-typography: mat.define-typography-config();
 @include mat.typography-hierarchy($my-typography);
 @include mat.tooltip-typography($my-typography);
 
+// Professional Light Theme with Dark Header
+$professional-primary: mat.define-palette(mat.$grey-palette, 800, 900, 700);
+$professional-accent: mat.define-palette(mat.$blue-grey-palette, 400, 300, 500);
+$professional-warn: mat.define-palette(mat.$red-palette, 400);
+$professional-theme: mat.define-light-theme((
+  color: (
+    primary: $professional-primary,
+    accent: $professional-accent,
+    warn: $professional-warn,
+  ),
+  typography: $my-typography,
+  density: 0,
+));
+
+@include mat.all-component-themes($professional-theme);
+
+// Additional theme variations
+$professional-dark-primary: mat.define-palette(mat.$grey-palette, 700, 600, 800);
+$professional-dark-accent: mat.define-palette(mat.$blue-grey-palette, 600, 500, 700);
+$professional-dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $professional-dark-primary,
+    accent: $professional-dark-accent,
+    warn: $professional-warn,
+  ),
+  typography: $my-typography,
+  density: 0,
+));
+
+.professional-dark-theme {
+  @include mat.all-component-colors($professional-dark-theme);
+}
+
+// Keep other theme variations for compatibility
 $deeppurple-amber-primary: mat.define-palette(mat.$deep-purple-palette);
 $deeppurple-amber-accent: mat.define-palette(mat.$amber-palette, 700, 600, 800);
 $deeppurple-amber-theme: mat.define-light-theme((
@@ -18,7 +52,10 @@ $deeppurple-amber-theme: mat.define-light-theme((
     accent: $deeppurple-amber-accent,
   )
 ));
-@include mat.all-component-themes($deeppurple-amber-theme);
+
+.deeppurple-amber-theme {
+  @include mat.all-component-colors($deeppurple-amber-theme);
+}
 
 $indigo-pink-primary: mat.define-palette(mat.$indigo-palette);
 $indigo-pink-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);

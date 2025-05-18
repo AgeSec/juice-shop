@@ -29,6 +29,8 @@ import { MatCardModule, MatCardImage, MatCardTitle, MatCardContent } from '@angu
 import { MatGridList, MatGridTile } from '@angular/material/grid-list'
 import { NgIf, NgFor, AsyncPipe } from '@angular/common'
 import { FlexModule } from '@angular/flex-layout/flex'
+import { ImageSliderComponent } from '../image-slider/image-slider.component'
+import { CategoryBarComponent } from '../category-bar/category-bar.component'
 
 library.add(faEye, faCartPlus)
 
@@ -47,7 +49,7 @@ interface TableEntry {
   templateUrl: './search-result.component.html',
   styleUrls: ['./search-result.component.scss'],
   standalone: true,
-  imports: [FlexModule, NgIf, MatGridList, NgFor, MatGridTile, MatCardModule, TranslateModule, MatTooltip, MatCardImage, MatButtonModule, MatCardTitle, MatCardContent, MatDivider, MatPaginator, AsyncPipe]
+  imports: [FlexModule, NgIf, MatGridList, NgFor, MatGridTile, MatCardModule, TranslateModule, MatTooltip, MatCardImage, MatButtonModule, MatCardTitle, MatCardContent, MatDivider, MatPaginator, AsyncPipe, ImageSliderComponent, CategoryBarComponent]
 })
 export class SearchResultComponent implements OnDestroy, AfterViewInit {
   public displayedColumns = ['Image', 'Product', 'Description', 'Price', 'Select']
@@ -62,6 +64,9 @@ export class SearchResultComponent implements OnDestroy, AfterViewInit {
   private routerSubscription?: Subscription
   public breakpoint: number = 6
   public emptyState = false
+  public showSlider = false
+  public showCategoryBar = false
+  private currentCategory = 'all'
 
   constructor (private readonly deluxeGuard: DeluxeGuard, private readonly dialog: MatDialog, private readonly productService: ProductService,
     private readonly quantityService: QuantityService, private readonly basketService: BasketService, private readonly translateService: TranslateService,
@@ -125,6 +130,8 @@ export class SearchResultComponent implements OnDestroy, AfterViewInit {
       } else {
         this.breakpoint = 6
       }
+      this.showSlider = !this.searchValue
+      this.showCategoryBar = !this.searchValue
       this.cdRef.detectChanges()
     }, (err) => { console.log(err) })
   }
@@ -158,6 +165,8 @@ export class SearchResultComponent implements OnDestroy, AfterViewInit {
       }) // vuln-code-snippet hide-end
       this.dataSource.filter = queryParam.toLowerCase()
       this.searchValue = this.sanitizer.bypassSecurityTrustHtml(queryParam) // vuln-code-snippet vuln-line localXssChallenge xssBonusChallenge
+      this.showSlider = false
+      this.showCategoryBar = false
       this.gridDataSource.subscribe((result: any) => {
         if (result.length === 0) {
           this.emptyState = true
@@ -168,6 +177,8 @@ export class SearchResultComponent implements OnDestroy, AfterViewInit {
     } else {
       this.dataSource.filter = ''
       this.searchValue = undefined
+      this.showSlider = true
+      this.showCategoryBar = true
       this.emptyState = false
     }
   }
@@ -260,5 +271,14 @@ export class SearchResultComponent implements OnDestroy, AfterViewInit {
 
   isDeluxe () {
     return this.deluxeGuard.isDeluxe()
+  }
+
+  onCategorySelected(category: string) {
+    this.currentCategory = category;
+    if (category === 'all') {
+      this.dataSource.filter = '';
+    } else {
+      this.dataSource.filter = category;
+    }
   }
 }

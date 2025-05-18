@@ -4,8 +4,8 @@ server:
   baseUrl: 'http://localhost:3000' # used for CSAF, e.g. https://example.com
 application:
   domain: juice-sh.op # for pre-loaded email users
-  name: 'OWASP Juice Shop'
-  logo: JuiceShop_Logo.png
+  name: 'AgeSec Shop'
+  logo: AgeSec_logo.png
   favicon: favicon_js.ico
   theme: bluegrey-lightgreen # Options: bluegrey-lightgreen blue-lightblue deeppurple-amber indigo-pink pink-bluegrey purple-green deeporange-indigo
   showVersionNumber: true

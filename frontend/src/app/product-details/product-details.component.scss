@@ -3,10 +3,18 @@
  * SPDX-License-Identifier: MIT
  */
 
+.container {
+  background-color: #ffffff;
+  padding: 20px;
+}
+
 .img-thumbnail {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 4px;
   height: auto;
   max-width: 100%;
-  padding: 0;
   width: 200px;
 }
 
@@ -24,8 +32,7 @@ p {
 }
 
 .detail-divider {
-  margin-bottom: 12px;
-  margin-top: 12px;
+  margin: 20px 0;
 }
 
 .rw-button {
@@ -47,9 +54,12 @@ p {
 }
 
 .item-price {
+  color: #424242;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 16px 0;
   float: left;
   margin-right: 40px;
-  margin-top: 8px;
 }
 
 .noResultText {
@@ -88,7 +98,9 @@ p {
 }
 
 h1 {
-  color: var(--theme-text);
+  color: #424242;
+  font-size: 24px;
+  margin-bottom: 16px;
 }
 
 div {
@@ -102,4 +114,17 @@ div {
   font-size: 11px;
   margin-left: -10px;
   margin-right: -10px;
+}
+
+mat-dialog-content {
+  background-color: #ffffff;
+  color: #424242;
+}
+
+::ng-deep .mat-mdc-dialog-container {
+  background-color: #ffffff !important;
+}
+
+::ng-deep .mat-mdc-dialog-surface {
+  background-color: #ffffff !important;
 }

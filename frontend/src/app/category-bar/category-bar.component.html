@@ -1,0 +1,10 @@
+<div class="category-bar">
+  <div class="category-container">
+    <button *ngFor="let category of categories"
+            class="category-button"
+            [class.active]="category.id === selectedCategory"
+            (click)="selectCategory(category.id)">
+      {{ category.name | translate }}
+    </button>
+  </div>
+</div> 

@@ -13,7 +13,7 @@ export async function productPrice (query: string, user: string) {
   const products = await ProductModel.findAll()
   const queriedProducts = products
     .filter((product: Product) => fuzz.partial_ratio(query, product.name) > 60)
-    .map((product: Product) => `${product.name} costs ${product.price}¤`)
+    .map((product: Product) => `${product.name} costs ${product.price}$`)
   return {
     action: 'response',
     body: queriedProducts.length > 0 ? queriedProducts.join(', ') : 'Sorry I couldn\'t find any products with that name'
